@@ -1,15 +1,20 @@
 {
-  "name": "FitFusion Lite — 통합 피트니스 코치",
+  "name": "FitFusion Pro — Ultimate Gym & Home Fitness",
   "short_name": "FitFusion",
-  "description": "운동, 영양, 수분, 진행률을 한 곳에서 기록하는 가벼운 피트니스 앱",
+  "description": "다국어 지원, 홈짐 맞춤형 AI 루틴 생성기 및 통합 피트니스 트래커",
   "lang": "ko",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#f7f8f6",
+  "background_color": "#10191c",
   "theme_color": "#172329",
   "icons": [
+    {
+      "src": "icon-180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
     {
       "src": "icon-192.png",
       "sizes": "192x192",
