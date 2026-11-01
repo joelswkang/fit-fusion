@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fitfusion-v7-cache';
+const CACHE_NAME = 'fitfusion-v7.1-cache';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -9,10 +9,11 @@ const ASSETS_TO_CACHE = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS_TO_CACHE);
-    }).then(() => self.skipWaiting())
+    })
   );
 });
 
@@ -32,11 +33,9 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(
-    caches.match(event.request).then((cachedResponse) => {
-      if (cachedResponse) {
-        return cachedResponse;
-      }
-      return fetch(event.request).catch(() => {
+    fetch(event.request).catch(() => {
+      return caches.match(event.request).then((cachedResponse) => {
+        if (cachedResponse) return cachedResponse;
         if (event.request.mode === 'navigate') {
           return caches.match('./index.html');
         }
